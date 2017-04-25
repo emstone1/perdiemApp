@@ -7,7 +7,11 @@
   "main": "main.js",
   "dependencies": {
     "expo": "16.0.0",
+    "firebase": "^3.8.0",
     "react": "16.0.0-alpha.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-16.0.0.tar.gz"
+  },
+  "devDependencies": {
+    "eslint-rallycoding": "^1.2.0"
   }
 }
