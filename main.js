@@ -1,36 +1,26 @@
 import Expo from 'expo';
 import React, { Component } from 'react';
-import * as firebase from 'firebase'
-import { StyleSheet, Text, View } from 'react-native';
-
-// Initialize Firebase
- firebase.initializeApp({
-       apiKey: "AIzaSyAk4SseEgf0bSmhkZgPje2-EAX-3ay3Xdc",
-       authDomain: "perdiem-a3b62.firebaseapp.com",
-       databaseURL: "https://perdiem-a3b62.firebaseio.com",
-       projectId: "perdiem-a3b62",
-       storageBucket: "perdiem-a3b62.appspot.com",
-       messagingSenderId: "54659155919"
- });
-
+import { Container, Content, Card, CardItem, Text, Body } from 'native-base';
+import data from './data/may2017.json';
 
 class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up d.js to start working on your app!</Text>
-      </View>
+      <Container>
+                      <Content>
+                          <Card>
+                              <CardItem>
+                                <Body>
+                                  <Text>
+                                    {data[0].country}
+                                  </Text>
+                                </Body>
+                              </CardItem>
+                          </Card>
+                      </Content>
+                  </Container>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 Expo.registerRootComponent(App);
