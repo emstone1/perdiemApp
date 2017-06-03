@@ -17,7 +17,8 @@ import data from '../data/may2017.json';
 
 class ListScreen extends React.Component {
   static navigationOptions = {
-    title: 'Select a Location',
+      header: null,
+  //  headerStyle: { marginTop: Exponent.Constants.statusBarHeight }
   };
   constructor(props) {
     super(props);
@@ -28,7 +29,6 @@ class ListScreen extends React.Component {
       };
     }
 /*  render() {
-    const { navigate } = this.props.navigation;
     return()
   //  return <Button onPress={() => navigate('Detail')} title="View Details" />;
 }*/
@@ -49,7 +49,7 @@ async componentWillMount() {
     return (
 
 
-      <Container paddingTop={5}>
+      <Container marginTop={Exponent.Constants.statusBarHeight}>
 
         <Header searchBar rounded>
     <Item>

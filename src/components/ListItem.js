@@ -6,7 +6,7 @@ class PDListItem extends Component {
   render() {
     const { country, location } = this.props.location;
     return (
-      <ListItem>
+      <ListItem onPress={this.props.onPressDetails}>
         <Text>{country} - {location}</Text>
       </ListItem>
     );
