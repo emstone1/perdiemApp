@@ -14,11 +14,9 @@ import {
 import ListItem from '../components/ListItem';
 import data from '../data/may2017.json';
 
-
 class ListScreen extends React.Component {
   static navigationOptions = {
       header: null,
-  //  headerStyle: { marginTop: Exponent.Constants.statusBarHeight }
   };
   constructor(props) {
     super(props);
@@ -27,11 +25,9 @@ class ListScreen extends React.Component {
         filter: '',
         data
       };
+      this.handleChildPress = this.handleChildPress.bind(this);
     }
-/*  render() {
-    return()
-  //  return <Button onPress={() => navigate('Detail')} title="View Details" />;
-}*/
+
 async componentWillMount() {
     if (Platform.OS === 'android') {
       await Exponent.Font.loadAsync({
@@ -42,6 +38,12 @@ async componentWillMount() {
 
     this.setState({ isReady: true });
   }
+
+  handleChildPress(place) {
+    const { navigate } = this.props.navigation;
+    navigate('Detail', { ...place });
+  }
+
   render() {
     if (!this.state.isReady) {
       return <Exponent.Components.AppLoading />;
@@ -68,13 +70,18 @@ async componentWillMount() {
                       <Content>
                         <List
                           dataArray={filter(data, this.state.filter)}
-                          renderRow={(location) => <ListItem location={location} />
-                            }
+                          renderRow={(location) => <ListItem
+                            location={location}
+                            onPress={this.handleChildPress}
+                          />
+                        }
                         />
                       </Content>
                   </Container>
     );
   }
+
+
 }
 
 function filter(arr, text) {
