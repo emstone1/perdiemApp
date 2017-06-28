@@ -1,20 +1,28 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Container, StyleProvider, Content, getTheme } from 'native-base';
 import Exponent from 'exponent';
+import LocationDetailScreenCard from '../components/LocationDetailScreenCard';
+import LocationDetailWikiCard from '../components/LocationDetailWikiCard';
+const variables = {
+    iconFamily: 'FontAwesome',
+    iconFontSize: 28,
+  };
 
 class LocationDetailScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: `${navigation.state.params.location.country} - ${navigation.state.params.location.location}`,
+    title: `${navigation.state.params.location.location} - ${navigation.state.params.location.country}`,
     headerStyle: { marginTop: Exponent.Constants.statusBarHeight }
   });
 
   render() {
-    const { country, location } = this.props.navigation.state.params.location;
-    console.log(this.props.navigation.state.params.location);
+    const { perDiem } = this.props.navigation.state.params.location;
     return (
-      <Text>
-        <Text>{country} {location}</Text>
-      </Text>
+      <Container><StyleProvider style={getTheme(variables)}>
+        <Content>
+          {perDiem.map((season) => <LocationDetailScreenCard season={season} key={season.seasonCode} />)}
+        <LocationDetailWikiCard />
+      </Content></StyleProvider>
+      </Container>
     );
     }
 }
