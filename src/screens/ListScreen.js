@@ -31,8 +31,8 @@ class ListScreen extends React.Component {
 async componentWillMount() {
     if (Platform.OS === 'android') {
       await Exponent.Font.loadAsync({
-        'Roboto': require('native-base/Fonts/Roboto.ttf'),
-        'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+        Roboto: require('native-base/Fonts/Roboto.ttf'),
+        Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
       });
     }
 
@@ -61,7 +61,6 @@ async componentWillMount() {
           value={this.state.filter}
           onChangeText={(text) => this.setState({ filter: text })}
         />
-        <Icon name="ios-people" />
     </Item>
     <Button transparent>
         <Text>Search</Text>
